@@ -1,6 +1,6 @@
 # MERN Newspaper Project..
 
-This template provides a minimal setup to get React & Tailwind working in Vite with HMR and some ESLint rules.
+this is a full-stack mern news portal with many functionality.
 
 # Start the Setup
 
