@@ -16,7 +16,7 @@ const Header = () => {
               <span>Shanto Ahamed </span>
               <span className="text-gray-400">Admin</span>
             </div>
-            <NavLink to="/profile">
+            <NavLink to="/dashboard/profile">
               <img
                 src={Profile}
                 alt="Profile img"

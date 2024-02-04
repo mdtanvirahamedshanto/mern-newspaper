@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const { pathname } = useLocation();
+
   return (
     <div className="w-[250px] h-screen fixed left-0 top-0 bg-white">
       <div className="h-[70px] flex justify-center items-center">
@@ -14,9 +15,9 @@ const Sidebar = () => {
       </div>
       <ul className="flex flex-col px-3 font-medium gap-y-1">
         <Link
-          to={"/dashborad/admin"}
+          to={"/dashboard/admin"}
           className={`px-3 py-2 ${
-            pathname === "/dashborad/admin"
+            pathname === "/dashboard/admin"
               ? "bg-indigo-500 text-white"
               : "bg-white text-[#404040f6]"
           } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
@@ -24,12 +25,12 @@ const Sidebar = () => {
           <span>
             <AiFillDashboard />
           </span>
-          <span>Dashborad</span>
+          <span>Dashboard</span>
         </Link>
         <Link
-          to={"/dashborad/admin/news"}
+          to={"/dashboard/news"}
           className={`px-3 py-2 ${
-            pathname === "/dashborad/admin/news"
+            pathname === "/dashboard/news"
               ? "bg-indigo-500 text-white"
               : "bg-white text-[#404040f6]"
           } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
@@ -40,9 +41,9 @@ const Sidebar = () => {
           <span>News</span>
         </Link>
         <Link
-          to={"/dashborad/admin/writer/add"}
+          to={"/dashboard/writer/add"}
           className={`px-3 py-2 ${
-            pathname === "/dashborad/admin/writer/add"
+            pathname === "/dashboard/writer/add"
               ? "bg-indigo-500 text-white"
               : "bg-white text-[#404040f6]"
           } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
@@ -53,9 +54,9 @@ const Sidebar = () => {
           <span>Add Write</span>
         </Link>
         <Link
-          to={"/dashborad/admin/writer"}
+          to={"/dashboard/writers"}
           className={`px-3 py-2 ${
-            pathname === "/dashborad/admin/writer"
+            pathname === "/dashboard/writers"
               ? "bg-indigo-500 text-white"
               : "bg-white text-[#404040f6]"
           } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
@@ -66,9 +67,9 @@ const Sidebar = () => {
           <span>Writes</span>
         </Link>
         <Link
-          to={"/dashborad/admin/profile"}
+          to={"/dashboard/profile"}
           className={`px-3 py-2 ${
-            pathname === "/dashborad/admin/profile"
+            pathname === "/dashboard/profile"
               ? "bg-indigo-500 text-white"
               : "bg-white text-[#404040f6]"
           } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
@@ -79,7 +80,7 @@ const Sidebar = () => {
           <span>Profile</span>
         </Link>
         <Link
-          to={"/dashborad/admin"}
+          to={"/dashboard/admin"}
           className={`px-3 py-2 hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
         >
           <span>
