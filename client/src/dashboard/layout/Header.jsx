@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Profile from "/logo/profile.jpg";
 
 const Header = () => {
@@ -15,11 +16,13 @@ const Header = () => {
               <span>Shanto Ahamed </span>
               <span className="text-gray-400">Admin</span>
             </div>
-            <img
-              src={Profile}
-              alt="Profile img"
-              className="w-10 h-10 rounded-full"
-            />
+            <NavLink to="/profile">
+              <img
+                src={Profile}
+                alt="Profile img"
+                className="w-10 h-10 rounded-full cursor-pointer"
+              />
+            </NavLink>
           </div>
         </div>
       </div>
