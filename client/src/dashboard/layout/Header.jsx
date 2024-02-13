@@ -2,6 +2,11 @@ import { NavLink } from "react-router-dom";
 import Profile from "/logo/profile.jpg";
 
 const Header = () => {
+  const userInfo = {
+    name: "Tanvir Ahamed",
+    role: "Writer",
+    image: Profile,
+  };
   return (
     <div className="pl-4 fixed w-[calc(100vw-250px)] top-4 z-50">
       <div className="w-full rounded h-[70px] flex justify-between items-center p-4 bg-white">
@@ -13,12 +18,12 @@ const Header = () => {
         <div className="mr-4">
           <div className="flex gap-x-2">
             <div className="flex flex-col justify-center items-end">
-              <span>Shanto Ahamed </span>
-              <span className="text-gray-400">Admin</span>
+              <span>{userInfo.name}</span>
+              <span className="text-gray-400">{userInfo.role}</span>
             </div>
             <NavLink to="/dashboard/profile">
               <img
-                src={Profile}
+                src={userInfo.image}
                 alt="Profile img"
                 className="w-10 h-10 rounded-full cursor-pointer"
               />
