@@ -1,9 +1,4 @@
-import {
-  AiFillDashboard,
-  AiOutlinePlus,
-  AiOutlineUser,
-  AiTwotoneBook,
-} from "react-icons/ai";
+import { AiFillDashboard, AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import { BiNews } from "react-icons/bi";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
@@ -99,7 +94,7 @@ const Sidebar = () => {
                 } hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
               >
                 <span>
-                  <AiTwotoneBook />
+                  <AiOutlinePlus />
                 </span>
                 <span>Create News</span>
               </Link>

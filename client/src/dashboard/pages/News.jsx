@@ -3,7 +3,7 @@ import NewsContent from "../components/NewsContent";
 
 const News = () => {
   const userInfo = {
-    role: "admin",
+    role: "writer",
   };
   return (
     <div className="bg-white rounded-md">
