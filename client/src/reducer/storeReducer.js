@@ -3,15 +3,19 @@ import decodeToken from "../utils/decodeToken";
 /* eslint-disable no-unused-vars */
 const storeReducer = (state, action) => {
   const { type, payload } = action;
-  switch (type) {
-    case "login":
-      {
-        state.userInfo = decodeToken(payload);
-        state.token = payload;
-      }
-      break;
-    default:
-      return state;
+  // switch (type) {
+  //   case "login":
+  //     {
+  //       state.token = payload;
+  //       state.userInfo = decodeToken(payload);
+  //     }
+  //     break;
+  //   default:
+  //     return state;
+  // }
+  if (type === "login") {
+    state.token = payload;
+    state.userInfo = decodeToken(payload);
   }
 };
 

@@ -1,14 +1,13 @@
+import { useContext } from "react";
 import { AiFillDashboard, AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import { BiNews } from "react-icons/bi";
 import { FiLogOut, FiUsers } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
+import StoreContext from "../../contexts/StoreContext";
 
 const Sidebar = () => {
   const { pathname } = useLocation();
-
-  const userInfo = {
-    role: "writer",
-  };
+  const { store } = useContext(StoreContext);
 
   return (
     <div className="w-[250px] h-screen fixed left-0 top-0 bg-white">
@@ -18,7 +17,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <ul className="flex flex-col px-3 font-medium gap-y-1">
-        {userInfo.role === "admin" ? (
+        {store.userInfo?.role === "admin" ? (
           <>
             <li>
               <Link

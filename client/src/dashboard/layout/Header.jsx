@@ -1,12 +1,9 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import Profile from "/logo/profile.jpg";
+import StoreContext from "../../contexts/StoreContext";
 
 const Header = () => {
-  const userInfo = {
-    name: "Tanvir Ahamed",
-    role: "Writer",
-    image: Profile,
-  };
+  const { store } = useContext(StoreContext);
   return (
     <div className="pl-4 fixed w-[calc(100vw-250px)] top-4 z-50">
       <div className="w-full rounded h-[70px] flex justify-between items-center p-4 bg-white">
@@ -18,12 +15,12 @@ const Header = () => {
         <div className="mr-4">
           <div className="flex gap-x-2">
             <div className="flex flex-col justify-center items-end">
-              <span>{userInfo.name}</span>
-              <span className="text-gray-400">{userInfo.role}</span>
+              <span>{store.userInfo?.name}</span>
+              <span className="text-gray-400">{store.userInfo?.role}</span>
             </div>
             <NavLink to="/dashboard/profile">
               <img
-                src={userInfo.image}
+                src={store.userInfo?.image}
                 alt="Profile img"
                 className="w-10 h-10 rounded-full cursor-pointer"
               />
