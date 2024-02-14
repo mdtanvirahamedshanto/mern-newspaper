@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { base_url } from "../../config/config";
+import StoreContext from "../../contexts/StoreContext";
 
 const Login = () => {
   const [loader, setLoader] = useState(false);
@@ -10,7 +12,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const { dispatch } = useContext(StoreContext);
 
+  const navigate = useNavigate();
   const handleInput = (e) => {
     setState({
       ...state,
@@ -20,12 +24,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoader(true);
       const { data } = await axios.post(`${base_url}/api/login`, state);
-      console.log(data);
-      toast("Loging Succsfully");
+      setLoader(false);
+      localStorage.setItem("newstoken", data.token);
+      toast.success(data.message);
+
+      dispatch({
+        type: "login",
+        payload: data.token,
+      });
+      navigate("/dashboard");
     } catch (error) {
-      console.log(error);
-      toast("Something Went Wrong");
+      setLoader(false);
+      toast.error(error.response.data.message);
     }
   };
   return (
@@ -89,7 +101,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <Toaster />
     </div>
   );
 };
