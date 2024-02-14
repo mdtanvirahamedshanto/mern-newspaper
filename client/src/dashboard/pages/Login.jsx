@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(`${base_url}/api/login`, state);
-      console.log(state);
+      console.log(data);
       toast("Loging Succsfully");
     } catch (error) {
       console.log(error);
