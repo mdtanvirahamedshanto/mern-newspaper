@@ -133,7 +133,7 @@ const Sidebar = () => {
         </li>
         <li>
           <Link
-            to={"/dashboard/admin"}
+            to={"/login"}
             className={`px-3 py-2 hover:shadow-lg hover:shadow-indigo-500/20 w-full rounded-sm flex gap-x-2 justify-start items-center hover:bg-indigo-500 hover:text-white `}
           >
             <span>
