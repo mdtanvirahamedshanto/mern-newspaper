@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import StoreContext from "./contexts/StoreContext";
 import MainLayout from "./dashboard/layout/MainLayout";
 import AddWriter from "./dashboard/pages/AddWriter";
 import AdminIndex from "./dashboard/pages/AdminIndex";
@@ -14,10 +12,9 @@ import Writers from "./dashboard/pages/Writers";
 import ProtectDashboard from "./middlewares/ProtectDashboard";
 import ProtectRole from "./middlewares/ProtectRole";
 export default function App() {
-  const { store } = useContext(StoreContext);
-  // console.log(store);
-  const userInfo = store.userInfo;
-  console.log(userInfo);
+  const userInfo = {
+    role: "writer",
+  };
   return (
     <BrowserRouter>
       <Routes>
