@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { base_url } from "../../config/config";
 
 const Login = () => {
   const [loader, setLoader] = useState(false);
@@ -14,9 +17,16 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(state);
+    try {
+      const { data } = await axios.post(`${base_url}/api/login`, state);
+      console.log(state);
+      toast("Loging Succsfully");
+    } catch (error) {
+      console.log(error);
+      toast("Something Went Wrong");
+    }
   };
   return (
     <div className="min-w-screen min-h-screen bg-slate-200 flex justify-center items-center">
@@ -79,6 +89,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
