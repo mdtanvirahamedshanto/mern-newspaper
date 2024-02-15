@@ -28,7 +28,7 @@ const AddWriter = () => {
         state,
         {
           headers: {
-            authorization: `Bearer ${store.token}`,
+            Authorization: `Bearer ${store.token}`,
           },
         }
       );

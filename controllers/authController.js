@@ -48,6 +48,10 @@ class authController {
       console.log(error);
     }
   };
+
+  add_writer = async (req, res) => {
+    console.log("aci ree vai aci");
+  };
 }
 
 module.exports = new authController();
