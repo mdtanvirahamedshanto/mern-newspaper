@@ -16,7 +16,7 @@ class authController {
       });
     }
     try {
-      const user = await authModel.findOne({ email });
+      const user = await authModel.findOne({ email }).select("+password");
 
       if (user) {
         const match = await bcrypt.compare(password, user.password);
@@ -50,7 +50,62 @@ class authController {
   };
 
   add_writer = async (req, res) => {
-    console.log("aci ree vai aci");
+    const { name, email, password, category } = req.body;
+
+    if (!name) {
+      return res.status(404).json({ message: "Please Provide writer name" });
+    }
+    if (!email) {
+      return res.status(404).json({ message: "Please Provide writer email" });
+    }
+    if (!password) {
+      return res
+        .status(404)
+        .json({ message: "Please Provide writer password" });
+    }
+    if (!category) {
+      return res
+        .status(404)
+        .json({ message: "Please Provide writer category" });
+    }
+
+    if (
+      email &&
+      !email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
+    ) {
+      return res.status(404).json({ message: "Please Provide a Valid Email" });
+    }
+    try {
+      const writer = await authModel.findOne({ email: email.trim() });
+      if (writer) {
+        return res.status(404).json({ message: "Writer already exist" });
+      } else {
+        const new_writer = await authModel.create({
+          name: name.trim(),
+          email: email.trim(),
+          password: await bcrypt.hash(password.trim(), 9),
+          category: category.trim(),
+          role: "writer",
+        });
+
+        return res.status(201).json({ message: "Writer create succesfully" });
+      }
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json({ message: "Server internal error" });
+    }
+  };
+
+  get_writers = async (req, res) => {
+    try {
+      const writers = await authModel.find({ role: "writer" }).sort({
+        createdAt: -1,
+      });
+      return res.status(201).json({ writers });
+    } catch (error) {
+      return res.status(500).json({ message: "Server internal error" });
+    }
   };
 }
 

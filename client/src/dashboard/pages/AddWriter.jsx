@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { base_url } from "../../config/config";
 import StoreContext from "../../contexts/StoreContext";
 
@@ -14,15 +15,18 @@ const AddWriter = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const handleInput = (e) => {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const { data } = await axios.post(
         `${base_url}/api/news/writer/add`,
         state,
@@ -32,8 +36,12 @@ const AddWriter = () => {
           },
         }
       );
+      navigate("/dashboard/writers");
+      setLoading(false);
+      toast.success(data.message);
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -119,7 +127,7 @@ const AddWriter = () => {
                 Password
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 name="password"
                 className="px-3 py-2 rounded-md outline-0 border border-gray-300 focus:border-green-500 h-10"
@@ -129,7 +137,7 @@ const AddWriter = () => {
           </div>
           <div className="mt-8 text-center" onClick={handleSubmit}>
             <Link className="px-3 py-[6px] bg-blue-500 rounded-lg text-white hover:bg-blue-900">
-              Add Writer
+              {loading ? "Loading" : "Add Writer"}
             </Link>
           </div>
         </form>

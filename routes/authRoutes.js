@@ -9,5 +9,11 @@ router.post(
   middleware.role,
   authController.add_writer
 );
+router.get(
+  "/api/news/writers",
+  middleware.auth,
+  middleware.role,
+  authController.get_writers
+);
 
 module.exports = router;

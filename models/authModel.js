@@ -12,6 +12,7 @@ const authSchema = new Schema(
     },
     password: {
       type: String,
+      select: false,
       required: true,
     },
     role: {

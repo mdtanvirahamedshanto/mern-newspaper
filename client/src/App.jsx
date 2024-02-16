@@ -27,7 +27,7 @@ export default function App() {
             <Route
               path=""
               element={
-                store.userInfo?.role === "admin" ? (
+                store?.userInfo?.role === "admin" ? (
                   <Navigate to="/dashboard/admin" />
                 ) : (
                   <Navigate to="/dashboard/writer" />
