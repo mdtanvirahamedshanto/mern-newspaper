@@ -9,7 +9,7 @@ const ProtectDashboard = () => {
   //   role: "admin",
   // };
 
-  if (store.userInfo) {
+  if (store?.userInfo) {
     return <Outlet />;
   } else {
     return <Navigate to="/login" />;

@@ -17,6 +17,7 @@ const storeReducer = (state, action) => {
     state.token = payload;
     state.userInfo = decodeToken(payload);
   }
+  return state;
 };
 
 export default storeReducer;

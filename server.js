@@ -23,5 +23,6 @@ app.use("/", require("./routes/authRoutes"));
 app.get("/", (req, res) => res.send("Hello World!"));
 
 const port = process.env.port;
-db_connect();
-app.listen(port, () => console.log(`Server in Runing on port ${port}!`));
+db_connect().then(() => {
+  app.listen(port, () => console.log(`Server in Runing on port ${port}!`));
+});
