@@ -1,5 +1,10 @@
-const WriterIndex = () => {
-  return <div>WriterIndex</div>;
-};
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default WriterIndex;
+const WriterIndex = () => {
+    return (
+        <div>WriterIndex</div>
+    )
+}
+
+export default WriterIndex
