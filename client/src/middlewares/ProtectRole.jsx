@@ -9,8 +9,9 @@ const ProtectRole = ({ role }) => {
   //   name: "shanto",
   //   role: "writer",
   // };
-
-  if (store.userInfo?.role === role) {
+  console.log(role);
+  console.log(store.userInfo.role);
+  if (store?.userInfo.role === role) {
     return <Outlet />;
   } else {
     return <Navigate to="/dashboard/unable-access" />;

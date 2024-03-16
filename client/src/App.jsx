@@ -18,6 +18,9 @@ export default function App() {
   // const userInfo = {
   //   role: "writer",
   // };
+
+  const role = store?.userInfo?.role;
+  console.log(role);
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +30,7 @@ export default function App() {
             <Route
               path=""
               element={
-                store?.userInfo?.role === "admin" ? (
+                role === "admin" ? (
                   <Navigate to="/dashboard/admin" />
                 ) : (
                   <Navigate to="/dashboard/writer" />
