@@ -160,6 +160,35 @@ class newsController {
       return res.status(500).json({ message: "Internal server error" });
     }
   };
+
+  update_news_status = async (req, res) => {
+    const { news_id } = req.params;
+    const { role } = req.userInfo;
+    const { status } = req.body;
+
+    if (role === "admin") {
+      try {
+        const news = await newsModel.findByIdAndUpdate(
+          news_id,
+          {
+            status,
+          },
+          { new: true }
+        );
+
+        return res
+          .status(200)
+          .json({ message: "News status update success", news });
+      } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error" });
+      }
+    } else {
+      return res.status(403).json({
+        message: "User not update status",
+      });
+    }
+  };
 }
 
 module.exports = new newsController();
